@@ -1,0 +1,27 @@
+{
+  "name": "ouroboros",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "demo": "tsx src/demo.ts",
+    "start": "tsx src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Self-funding AI agent — earns USDC by selling intelligence, spends USDC to hire specialist agents",
+  "dependencies": {
+    "@ampersend_ai/ampersend-sdk": "^0.0.12",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.5.0",
+    "@x402/core": "^2.7.0",
+    "@x402/fetch": "^2.7.0",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "viem": "^2.47.6",
+    "x402": "^1.1.0",
+    "x402-express": "^1.1.0"
+  }
+}
