@@ -1,0 +1,40 @@
+{
+  "name": "Ouroboros",
+  "version": "1.0.0",
+  "type": "SelfFundingAgent",
+  "description": "A self-sustaining AI agent that earns USDC by selling intelligence and spends USDC to hire specialist sub-agents — growing its own balance autonomously with no human top-up required.",
+  "ampersendIntegration": {
+    "role": "load-bearing on both sides",
+    "earning": "x402 paymentMiddleware gates all incoming requests — remove it and the agent earns nothing",
+    "spending": "wrapWithAmpersend + wrapFetchWithPayment auto-pays sub-agents on 402 responses — remove it and the coordinator cannot hire specialists",
+    "sdk": "@ampersend_ai/ampersend-sdk",
+    "components": ["AccountWallet", "NaiveTreasurer", "wrapWithAmpersend"],
+    "network": "Base Sepolia",
+    "currency": "USDC"
+  },
+  "agents": [
+    {
+      "name": "DataAgent",
+      "port": 3001,
+      "earns": "$0.02 USDC per GitHub metrics lookup",
+      "capability": "Fetches real-time GitHub data: stars, forks, commit frequency, contributors"
+    },
+    {
+      "name": "AnalysisAgent",
+      "port": 3002,
+      "earns": "$0.05 USDC per Venice AI analysis",
+      "capability": "Private AI scoring: impact, sustainability, community, funding efficiency (1-10)"
+    },
+    {
+      "name": "Coordinator",
+      "port": 3000,
+      "earns": "$0.08 USDC per full analysis query",
+      "spends": "$0.07 USDC (DataAgent $0.02 + AnalysisAgent $0.05)",
+      "margin": "$0.01 per query — accumulates autonomously"
+    }
+  ],
+  "economicLoop": "User pays Coordinator $0.08 → Coordinator pays DataAgent $0.02 + AnalysisAgent $0.05 → Coordinator keeps $0.01 margin → agent balance grows with every query",
+  "whyItMatters": "Every AI agent today needs a human to keep its wallet funded. Ouroboros earns more than it spends — it funds its own compute, hires its own specialists, and grows without human intervention. This is the complete vision of what ampersend-sdk enables.",
+  "techStack": ["TypeScript", "ampersend-sdk", "x402-express", "@x402/fetch", "Venice AI (llama-3.3-70b, no data retention)", "Base Sepolia", "USDC"],
+  "track": "Best Agent Built with ampersend-sdk"
+}
